@@ -9,7 +9,7 @@ const photoSchema = new Schema({
     },
     description: {
         type: String,
-        required:ture,
+        required: true,
         trim: true 
     },
     uploadedAt: {
