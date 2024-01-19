@@ -20,4 +20,19 @@ const createPhoto = async (req, res) => {
     }
 };
 
-export { createPhoto };
+const getAllPhotos = async (req, res) => { // Burada kapanan parantezi ekledim
+    try {
+        const photos = await Photo.find({});
+        res.status(200).json({
+            succeeded: true,
+            photos,
+        });
+    } catch (error) {
+        res.status(500).json({
+            succeeded: false,
+            error,
+        });
+    }
+};
+
+export { createPhoto, getAllPhotos };
