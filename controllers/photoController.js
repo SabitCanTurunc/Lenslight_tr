@@ -23,10 +23,10 @@ const createPhoto = async (req, res) => {
 const getAllPhotos = async (req, res) => { // Burada kapanan parantezi ekledim
     try {
         const photos = await Photo.find({});
-        res.status(200).json({
-            succeeded: true,
+        res.status(200).render("photos",{
             photos,
         });
+        
     } catch (error) {
         res.status(500).json({
             succeeded: false,
