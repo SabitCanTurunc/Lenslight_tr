@@ -21,7 +21,7 @@ app.use(express.json());
 
 
 //routers
-app.use("/",pageRoute);
+app.use("/",pageRoute); 
 app.use("/photos",photoRoute);
 
 // app.post("/photos",async(req,res)=>

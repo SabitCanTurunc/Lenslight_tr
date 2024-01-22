@@ -25,6 +25,7 @@ const getAllPhotos = async (req, res) => { // Burada kapanan parantezi ekledim
         const photos = await Photo.find({});
         res.status(200).render("photos",{
             photos,
+            link:"photos",
         });
         
     } catch (error) {
