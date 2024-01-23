@@ -20,7 +20,7 @@ app.set("view engine", "ejs");
 //statics files middleware
 app.use(express.static('public'));
 app.use(express.json());
-
+app.use(express.urlencoded({extended:true}));
 
 //routers
 app.use("/",pageRoute); 
