@@ -36,4 +36,20 @@ const getAllPhotos = async (req, res) => { // Burada kapanan parantezi ekledim
     }
 };
 
-export { createPhoto, getAllPhotos };
+const getAPhoto = async (req, res) => { // Burada kapanan parantezi ekledim
+    try {
+        const photos = await Photo.findById({_id: req.params.id});
+        res.status(200).render("photo",{
+            photo,
+            link:"photos",
+        });
+        
+    } catch (error) {
+        res.status(500).json({
+            succeeded: false,
+            error,
+        });
+    }
+};
+
+export { createPhoto, getAllPhotos, getAPhoto };
