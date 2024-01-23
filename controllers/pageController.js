@@ -7,12 +7,12 @@ const getIndexPage = (req, res) => {
 const getAboutPage = (req, res) => {
     res.render("about",{
         link:"about",
-    })
-}
+    }) 
+} 
 const getRegisterPage = (req, res) => {
     res.render("register",{
         link:"register",
     })
 }
 
-export{getIndexPage, getAboutPage}
+export{getIndexPage, getAboutPage, getRegisterPage}
