@@ -23,6 +23,6 @@ const userSchema = new Schema({
     }
 );
 
-const Photo = mongoose.model("User",photoSchema);
+const User = mongoose.model("User",userSchema);
 
 export default User;
