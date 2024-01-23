@@ -2,7 +2,9 @@ import express  from "express";
 import dotenv from "dotenv";
 import conn from "./db.js";
 import pageRoute from "./routes/pageRaute.js";
-import photoRoute from "./routes/photoRoute.js"
+import photoRoute from "./routes/photoRoute.js";
+import userRoute from "./routes/userRoute.js";
+
 dotenv.config();
 
 //connection to do DB
@@ -23,6 +25,8 @@ app.use(express.json());
 //routers
 app.use("/",pageRoute); 
 app.use("/photos",photoRoute);
+app.use("/users",userRoute);
+
 
 // app.post("/photos",async(req,res)=>
 // {
