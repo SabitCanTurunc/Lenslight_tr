@@ -1,7 +1,6 @@
 import User from "../models/userModel.js";
 
 const createUser = async (req, res) => {
-    console.log("req body", req.body);
 
     try {
         const user = await User.create(req.body);
