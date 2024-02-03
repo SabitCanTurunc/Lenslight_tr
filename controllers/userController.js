@@ -10,7 +10,7 @@ const createUser = async (req, res) => {
             succeeded: true,
             user,
         });
-        
+
     } catch (error) {
         console.error("Hata oluştu:", error.message);
         res.status(500).json({
@@ -52,7 +52,7 @@ const loginUser = async (req, res) => {
                 error: "password are not mached",
             });
         }
-        
+
     } catch (error) {
         console.error("Hata oluştu:", error.message);
         res.status(500).json({
@@ -67,8 +67,10 @@ const createToken = (userId) => {
 };
 
 const getDashboardPage = (req, res) => {
+
     res.render("dashboard", {
+
         link: "dashboard",
     })
 };
-export { createUser, loginUser,getDashboardPage };
+export { createUser, loginUser, getDashboardPage };

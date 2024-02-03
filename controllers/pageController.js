@@ -1,25 +1,30 @@
 const getIndexPage = (req, res) => {
-    console.log("req user",req.user);
 
-    res.render("index",{
-        link:"index",
+    res.render("index", {
+        link: "index",
     })
 }
 
 const getAboutPage = (req, res) => {
-    res.render("about",{
-        link:"about",
-    }) 
-} 
+    res.render("about", {
+        link: "about",
+    })
+}
 const getRegisterPage = (req, res) => {
-    res.render("register",{
-        link:"register",
+    res.render("register", {
+        link: "register",
     })
 }
 const getLoginPage = (req, res) => {
-    res.render("login",{
-        link:"login",
+    res.render("login", {
+        link: "login",
     })
 }
+const getLogoutPage = (req, res) => {
+    res.cookie("jwt", '', {
+        maxAge: 1
+    })
+    res.redirect("/");
+}
 
-export{getIndexPage, getAboutPage, getRegisterPage,getLoginPage}
+export { getIndexPage, getAboutPage, getRegisterPage, getLoginPage, getLogoutPage }
