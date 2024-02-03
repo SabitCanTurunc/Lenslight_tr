@@ -1,31 +1,57 @@
 import User from "../models/userModel.js";
-import jwt  from "jsonwebtoken";
-const authenticateToken = async (req, res, next)=>{
-    try{
-        const token=req.cookies.jwt
+import jwt from "jsonwebtoken";
 
-        if(token){
-            jwt.verify(token,process.env.JWT_SECRET, (err)=>{
-                if(err){
+
+const checkUser = async (req, res, next) => {
+    const token = req.cookies.jwt;
+    if (token) {
+        jwt.verify(token, process.env.JWT_SECRET, async (err, decodedToken) => {
+            if (err) {
+                console.log(err.message);
+                res.locals.user = null;
+                next();
+            } else {
+                const user = await User.findById(decodedToken.userId)
+                res.locals.user = user;
+                next(); 
+                ;
+
+            }
+        })
+    } else {
+        res.locals.user = null;
+        next();
+    }
+
+}
+
+
+const authenticateToken = async (req, res, next) => {
+    try {
+        const token = req.cookies.jwt
+
+        if (token) {
+            jwt.verify(token, process.env.JWT_SECRET, (err) => {
+                if (err) {
                     console.log(err.message);
                     res.redirect("/login");
-                }else{
+                } else {
                     next();
                 }
             });
-        }else{
+        } else {
             res.redirect("/login");
         };
 
-    }catch(error){
-        
+    } catch (error) {
+
         return res.status(401).json({
             suceded: false,
             error: "no token avaliable"
         });
-        
 
-    } 
+
+    }
 };
 
-export { authenticateToken};
+export { authenticateToken, checkUser };
