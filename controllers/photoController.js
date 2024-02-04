@@ -1,15 +1,15 @@
 import Photo from "../models/photoModel.js";
 
 const createPhoto = async (req, res) => {
-    console.log("req body", req.body);
 
-    try {
+    try { 
         // Photo.create bir promise döndürdüğü için await kullanılır
-        const photo = await Photo.create(req.body);
-        res.status(201).json({
-            succeeded: true,
-            photo,
+        await Photo.create({
+            name: req.body.name,
+            description: req.body.description,
+            user: res.locals.user._id,
         });
+        res.redirect("/users/dashboard");
     } catch (error) {
         // Hata durumunda hatayı log'la ve kullanıcıya uygun bir hata mesajı gönder
         console.error("Hata oluştu:", error.message);

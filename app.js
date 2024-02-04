@@ -26,28 +26,10 @@ app.use(express.urlencoded({extended:true}));
 app.use(cookieParser());
 
 //routers
-app.get("*",checkUser);
+app.use("*",checkUser);
 app.use("/",pageRoute); 
 app.use("/photos",photoRoute);
 app.use("/users",userRoute);
-
-
-// app.post("/photos",async(req,res)=>
-// {
-//     console.log("RES:",req);
-// })
-
-
-
-
-/* app.get("/",(req,res) =>{
-    res.render("index");
-});
-
-app.get("/about",(req,res)=>{
-    res.render("about");    
-});
- */
 
 
 app.listen(port, ()=> {
