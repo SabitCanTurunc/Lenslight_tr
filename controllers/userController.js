@@ -86,7 +86,7 @@ const getDashboardPage = async (req, res) => {
 
 const getAllUsers = async (req, res) => {
     try {
-        const users = await User.find({});
+        const users = await User.find({ _id:{ $ne: res.locals.user._id }});
         res.status(200).render('users', {
             users,
             link: 'users',
@@ -102,8 +102,11 @@ const getAllUsers = async (req, res) => {
 const getAUser = async (req, res) => {
     try {
         const user = await User.findById({ _id: req.params.id });
+        const photos = await Photo.find({user: res.locals.user._id});
+
         res.status(200).render('user', {
             user,
+            photos,
             link: 'users',
         });
     } catch (error) {
