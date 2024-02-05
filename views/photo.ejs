@@ -20,7 +20,7 @@
               <div class="titlepage text_align_left">
                 <h3 style="font-size:24px !important"><%= photo.name%></h3>
                 <p><%= photo.description%></p>
-                <a class="read_more" href="about.html">
+                <a class="read_more" href="/users/<%= photo.user._id%>">
                   Artist :<%= photo.user.username%>
                 </a>
               </div>
