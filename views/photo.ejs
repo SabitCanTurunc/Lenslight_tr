@@ -1,39 +1,53 @@
-<%- include("partials/_header")%>
+<%- include("partials/_header") %>
    <!-- body -->
+
    <body class="main-layout inner_page">
       <!-- loader  -->
       <div class="loader_bg">
-         <div class="loader"><img src="images/loading.gif" alt="#"/></div>
+         <div class="loader"><img src="/images/loading.gif" alt="#" /></div>
       </div>
       <!-- end loader -->
-     
-         <!-- header -->
-         <%- include("partials/_menu")%>
+
+      <!-- header -->
+      <%- include("partials/_menu") %>
+         <!-- end header inner -->
+         <!-- about -->
+         <div class="about">
+            <div class="container">
+               <div class="row">
+                  <div class="col-md-6">
+                     <div class="titlepage text_align_left">
+                        <h3 style="font-size:24px !important ;">
+                           <%= photo.name %>
+                        </h3>
+                        <p>
+                           <%= photo.description %>
+                        </p>
+                        <a class="read_more" href="/users/<%= photo.user._id %>">
+                           Artist: <%= photo.user.username %>
+                        </a>
 
 
-      <!-- end header inner -->
-      <!-- about -->
-      <div class="about">
-        <div class="container">
-          <div class="row">
-            <div class="col-md-6">
-              <div class="titlepage text_align_left">
-                <h3 style="font-size:24px !important"><%= photo.name%></h3>
-                <p><%= photo.description%></p>
-                <a class="read_more" href="/users/<%= photo.user._id%>">
-                  Artist :<%= photo.user.username%>
-                </a>
-              </div>
+                        <div style="margin-top: 30px ;">
+                           <ul style="display: flex; justify-content: space-between;">
+                              <li><a style="min-width: 266px;" class="read_more" href="#">Update</a></li>
+                              <li><a style="min-width: 266px;" class="read_more"
+                                    href="/photos/<%= photo._id %>?_method=DELETE"
+                                    onclick="return confirm('Do you want to delete the photo')">Delete</a></li>
+                           </ul>
+                        </div>
+
+
+                     </div>
+                  </div>
+                  <div class="col-md-6">
+                     <div class="about_img">
+                        <figure><img src="<%= photo.url %>" alt="<%= photo.name %>" /></figure>
+                     </div>
+                  </div>
+               </div>
             </div>
-            <div class="col-md-6">
-              <div class="about_img">
-                <figure><img src="<%= photo.url%>" alt="<%= photo.name%>"/></figure>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-      <!-- end about -->
-      <!-- end footer -->
-      <%- include("partials/_footer")%>
-
+         </div>
+         <!-- end about -->
+         <!-- end footer -->
+         <%- include("partials/_footer") %>
