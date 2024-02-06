@@ -36,6 +36,20 @@
         </div>
       </div>
       <!-- end customers  -->
+      <div class="container">
+         <div class="row">
+           <div class="col-md-12">
+             <div class="text_align_center">
+               <% if (!inFollowers){%>
+               <a style="margin:20px auto;" class="read_more" href="/users/<%=user._id%>/follow?_method=PUT">FOLLOW</a>
+               <%}else{%>
+               <a style="margin:20px auto;" class="read_more" href="/users/<%=user._id%>/unfollow?_method=PUT">UNFOLLOW</a>
+               <%}%>
+             </div>
+           </div>
+         </div>
+       </div>
+
        <!-- gallery -->
       <div class="gallery">
         <div class="container_with">

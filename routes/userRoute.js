@@ -11,7 +11,7 @@ router.route("/dashboard").get(authMiddleware.authenticateToken, userController.
 router.route("/").get(authMiddleware.authenticateToken, userController.getAllUsers);
 router.route("/:id").get(authMiddleware.authenticateToken, userController.getAUser);
 router.route("/:id/follow").put(authMiddleware.authenticateToken, userController.follow);
-router.route("/:id/follow").put(authMiddleware.authenticateToken, userController.unfollow);
+router.route("/:id/unfollow").put(authMiddleware.authenticateToken, userController.unfollow);
 
 
 

@@ -2,12 +2,14 @@ import express  from "express";
 import dotenv from "dotenv";
 import conn from "./db.js";
 import cookieParser from "cookie-parser";
+import methodOverride  from "method-override";
 import pageRoute from "./routes/pageRaute.js";
 import photoRoute from "./routes/photoRoute.js";
 import userRoute from "./routes/userRoute.js";
 import {checkUser} from"./middlewares/authMiddleware.js";
 import fileUpload from "express-fileupload";
 import {v2 as cloudinary} from 'cloudinary';
+
 
 dotenv.config();
 
@@ -33,6 +35,7 @@ app.use(express.json());
 app.use(express.urlencoded({extended:true}));
 app.use(cookieParser());
 app.use(fileUpload({useTempFiles:true}));
+app.use(methodOverride('_method',{methods:['POST',"GET" ],}));
 
 //routers
 app.use("*",checkUser);
