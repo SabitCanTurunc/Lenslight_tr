@@ -20,6 +20,7 @@
     "jsonwebtoken": "^9.0.2",
     "method-override": "^3.0.0",
     "mongoose": "^8.0.3",
+    "nodemailer": "^6.9.10",
     "validate": "^5.2.0",
     "validator": "^13.11.0"
   },
